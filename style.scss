@@ -4,6 +4,9 @@
 Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
 -------------------------------------------------------------- */
 
+$header_height: 100px;
+$sect_width: 1600px;
+$wrap_width: 1400px;
 $inner1: 950;
 $inner2: 800;
 $inner3: 600;
@@ -562,19 +565,7 @@ nav {
 ｜   マージン・パディング margin(padding)_top(btm)_○○
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 
-$interval: 0,
-5,
-10,
-20,
-30,
-40,
-50,
-60,
-70,
-80,
-90,
-100,
-150;
+$interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
 @each $px in $interval {
     .margin_top_#{$px} {
         margin-top: #{$px}px!important;
@@ -983,6 +974,30 @@ img {
     align-items: center;
 }
 
+.jc_center {
+    justify-content: center;
+}
+
+.jc_start {
+    justify-content: flex-start;
+}
+
+.jc_end {
+    justify-content: flex-end;
+}
+
+.jc_between {
+    justify-content: space-between;
+}
+
+.jc_around {
+    justify-content: space-around;
+}
+
+.jc_evenly {
+    justify-content: space-evenly;
+}
+
 
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   レイアウト
@@ -1006,12 +1021,12 @@ img {
     margin: 0 auto 0;
 }
 
-// 上で指定したインナー枠を作成する
+// 最上部で指定したインナー枠を作成する
 $inner: $inner1,
 $inner2,
 $inner3;
 @each $width in $inner {
-    .inner-#{$width} {
+    .inner_#{$width} {
         width: #{$width}px;
         padding-bottom: 0px;
         margin: 0 auto 0;
@@ -1019,34 +1034,18 @@ $inner3;
 }
 
 // 各パターンでフレックス、スペースビトウィーン
-.wrap_1clm,
-.wrap_2clm,
-.wrap_2clm_no_mgn,
-.wrap_3clm,
-.wrap_3clm_no_mgn,
-.wrap_4clm,
-.wrap_4clm_no_mgn,
-.wrap_5clm,
-.wrap_5clm_no_mgn,
-.wrap_differ_no_mgn,
-.wrap_differ_no_mgn {
+.wrap_clm {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin: 0 0 30px;
 }
 
-// no_mgn でノーマージン
-.wrap_2clm_no_mgn,
-.wrap_3clm_no_mgn,
-.wrap_4clm_no_mgn,
-.wrap_5clm_no_mgn,
-.wrap_differ_no_mgn {
-    margin: 0;
-}
-
-.post-col {
+.post_clm {
     flex-wrap: wrap;
+    div {
+        margin: 0 0 2.5%!important;
+    }
 }
 
 
@@ -1056,349 +1055,21 @@ $inner3;
 // 2カラムの中で左に40% 右に50% を指定すると、両端がくっついて、間に10%のマージンが出来る。※予定
 @for $i from 4 through 36 {
     @if $i% 2==0 {
-        .div.grid#{$i * 2.5 } {
+        div.grid#{$i * 2.5 } {
             width: percentage($i*25/1000);
+            margin: 0;
         }
     }
     @else {
-        .div.grid#{$i * 25} {
+        div.grid#{$i * 25} {
             width: percentage($i*25/1000);
+            margin: 0;
         }
     }
 }
 
-.div.grid {
+div.grid {
     width: 100%;
-}
-
-.wrap_2clm div.grid {
-    width: 47.5%;
-}
-
-.cassetteCol2 div.cst:nth-child(2n) {
-    margin: 0 0 0 2.5%;
-}
-
-.cassetteCol2 div.cst.w50p {
-    width: 50%;
-    margin: 0 auto;
-}
-
-.cassetteCol2 div.cst.w47-5p {
-    width: 47.5%;
-    margin: 0 auto;
-}
-
-.cassetteCol2 div.cst.w45p {
-    width: 45%;
-    margin: 0 auto;
-}
-
-.cassetteCol2 div.cst.w42-5p {
-    width: 42.5%;
-    margin: 0 auto;
-}
-
-.cassetteCol2 div.cst.w40p {
-    width: 40%;
-    margin: 0 auto;
-}
-
-.cassetteCol2 div.cst.w35p {
-    width: 35%;
-    margin: 0 auto;
-}
-
-
-/*--2カラム(投稿一覧)--*/
-
-.cassetteCol2.post-col div.cst {
-    width: 47.5%;
-    margin: 0 2.5% 5% 0;
-    padding-bottom: 25px;
-}
-
-.cassetteCol2.post-col div.cst:nth-child(2n) {
-    margin: 0 0 5% 2.5%;
-}
-
-
-/*--3カラム--*/
-
-.cassetteCol3 div.cst {
-    width: 31.4%;
-    margin: 0 3% 0 0;
-}
-
-.cassetteCol3 div.cst:nth-child(3n) {
-    margin: 0 0 0 0;
-}
-
-
-/*--3カラム(投稿一覧)--*/
-
-.cassetteCol3.post-col div.cst {
-    width: 31.3%;
-    margin: 0 3% 5% 0;
-    border-bottom: #c4576d 1px dotted;
-}
-
-.cassetteCol3.post-col div.cst:nth-child(3n) {
-    margin: 0 0 3% 0;
-}
-
-
-/*--4カラム--*/
-
-.cassetteCol4 div.cst {
-    width: calc((100% - 5% * 3) / 4);
-    /* カラム間が5%から変更する時は width も変更方 */
-    margin: 0 5% 0 0;
-}
-
-.cassetteCol4 div.cst:last-child {
-    margin: 0 0 0 0;
-}
-
-
-/*--5カラム--*/
-
-.cassetteCol5 div.cst {
-    width: 100%;
-    margin: 0 5% 0 0;
-}
-
-.cassetteCol5 div.cst:last-child {
-    margin: 0 0 0 0;
-}
-
-
-/*--4カラム(投稿一覧)--*/
-
-.cassetteCol4.post-col div.cst {
-    width: 23%;
-    margin: 0 2.6% 3% 0;
-}
-
-.cassetteCol4.post-col div.cst:nth-child(4n) {
-    margin: 0 0 3% 0;
-}
-
-
-/*--2カラムパターン　左20%--*/
-
-.cassette-pattern div.cstLeft-20pct {
-    width: calc(100% - 80%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-80pct {
-    width: 80%;
-    margin: 0 0 0 0;
-}
-
-
-/*--2カラムパターン　左30%--*/
-
-.cassette-pattern div.cstLeft-30pct {
-    width: calc(100% - 70%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-70pct {
-    width: 70%;
-    margin: 0 0 0 0;
-}
-
-
-/*--2カラムパターン　左35%--*/
-
-.cassette-pattern div.cstLeft-35pct {
-    width: calc(100% - 65%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-65pct {
-    width: 65%;
-    margin: 0 0 0 0;
-}
-
-
-/*--2カラムパターン　左40%--*/
-
-.cassette-pattern div.cstLeft-40pct {
-    width: calc(100% - 60%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-60pct {
-    width: 60%;
-    margin: 0 0 0 0;
-}
-
-
-/*--2カラムパターン　左45%--*/
-
-.cassette-pattern div.cstLeft-45pct {
-    width: calc(100% - 55%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-55pct {
-    width: 55%;
-    margin: 0 0 0 0;
-}
-
-
-/*--2カラムパターン　左55%--*/
-
-.cassette-pattern div.cstLeft-55pct {
-    width: calc(100% - 45%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-45pct {
-    width: 45%;
-    margin: 0 0 0 0;
-}
-
-
-/*--2カラムパターン　左60%--*/
-
-.cassette-pattern div.cstLeft-60pct {
-    width: calc(100% - 40%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-40pct {
-    width: 40%;
-    margin: 0 0 0 0;
-}
-
-
-/*--2カラムパターン　左65%--*/
-
-.cassette-pattern div.cstLeft-65pct {
-    width: calc(100% - 35%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-35pct {
-    width: 35%;
-    margin: 0 0 0 0;
-}
-
-
-/*--2カラムパターン　左70%--*/
-
-.cassette-pattern div.cstLeft-70pct {
-    width: calc(100% - 30%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-30pct {
-    width: 30%;
-    margin: 0 0 0 0;
-}
-
-
-/*--2カラムパターン　左80%--*/
-
-.cassette-pattern div.cstLeft-80pct {
-    width: calc(100% - 20%);
-    margin: 0 5% 0 0;
-}
-
-.cassette-pattern div.cstRight-20pct {
-    width: 20%;
-    margin: 0 0 0 0;
-}
-
-
-/*--------------マージン無--------------*/
-
-
-/*--マージン無2カラム--*/
-
-.cassetteCol2--no-mgn div.cst {
-    width: 100%;
-    margin: 0 0 0 0;
-}
-
-
-/*--マージン無3カラム--*/
-
-.cassetteCol3--no-mgn div.cst {
-    width: 100%;
-    margin: 0 0 0 0;
-}
-
-
-/*--マージン無4カラム--*/
-
-.cassetteCol4--no-mgn div.cst {
-    width: 100%;
-    margin: 0 0 0 0;
-}
-
-
-/*--マージン無5カラム--*/
-
-.cassetteCol5--no-mgn div.cst {
-    width: 100%;
-    margin: 0 0 0 0;
-}
-
-
-/*--マージン無2カラムパターン　左30%--*/
-
-.cassette-pattern--no-mgn div.cstLeft-30pct {
-    width: calc(100% - 70%);
-    margin: 0 0 0 0;
-}
-
-.cassette-pattern--no-mgn div.cstRight-70pct {
-    width: 70%;
-    margin: 0 0 0 0;
-}
-
-
-/*--マージン無2カラムパターン　左40%--*/
-
-.cassette-pattern--no-mgn div.cstLeft-40pct {
-    width: calc(100% - 60%);
-    margin: 0 0 0 0;
-}
-
-.cassette-pattern--no-mgn div.cstRight-60pct {
-    width: 60%;
-    margin: 0 0 0 0;
-}
-
-
-/*--マージン無2カラムパターン　左60%--*/
-
-.cassette-pattern--no-mgn div.cstLeft-60pct {
-    width: calc(100% - 40%);
-    margin: 0 0 0 0;
-}
-
-.cassette-pattern--no-mgn div.cstRight-40pct {
-    width: 40%;
-    margin: 0 0 0 0;
-}
-
-
-/*--マージン無2カラムパターン　左70%--*/
-
-.cassette-pattern--no-mgn div.cstLeft-70pct {
-    width: calc(100% - 30%);
-    margin: 0 0 0 0;
-}
-
-.cassette-pattern--no-mgn div.cstRight-30pct {
-    width: 30%;
-    margin: 0 0 0 0;
 }
 
 @media only screen and (max-width: 950px) {
@@ -2144,26 +1815,6 @@ header .header_wrap {
 main {
     margin-top: 100px;
     /* ヘッダー分コンテンツを下げる */
-}
-
-section.mv {
-    max-width: 100vw;
-    min-height: 50vw;
-    /* 画像の比率で変更する。 */
-}
-
-section {
-    max-width: 1120px;
-    margin: 50px auto;
-}
-
-.container {
-    max-width: 1280px;
-}
-
-.inner {
-    width: 100%;
-    max-width: 940px;
 }
 
 
