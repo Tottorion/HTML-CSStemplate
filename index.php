@@ -15,7 +15,7 @@
     <main class="top">
 
         <section class="mv relative">
-            <img src="./img/top/top_mv.png" alt="mv" width="100vw" height="auto">
+            <img src="https://placehold.jp/92aac7/ffffff/1200x600.png?text=MV%201200x600" alt="mv" width="100vw" height="auto">
         </section>
 
         <section class="sect_01">
