@@ -4,12 +4,28 @@
 Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
 -------------------------------------------------------------- */
 
-$header_height: 100px;
-$sect_width: 1600px;
-$wrap_width: 1400px;
-$inner1: 950;
-$inner2: 800;
-$inner3: 600;
+$header_height: 100px; // ヘッダーの高さ
+$main_width: 1600px; // メインタグの幅(カンバス幅)
+$outer: 1400px; // アウター(コンテンツ外枠)の幅
+$inner1: 950; // インナー(コンテンツ内枠)の幅
+$inner2: 800; // 上記の2パターン目 ※必要に応じて
+$inner3: 600; // 上記の3パターン目 ※必要に応じて
+$key_color: #92aac7; // テーマカラー
+$key_font_color: #333333; // フォントカラー
+$font_family1: "Helvetica Neue",
+Arial,
+"Hiragino Kaku Gothic ProN",
+"Hiragino Sans",
+"BIZ UDPGothic",
+Meiryo,
+sans-serif; // フォント1
+$font_family2: "Helvetica Neue",
+Arial,
+"Hiragino Kaku Gothic ProN",
+"Hiragino Sans",
+"BIZ UDPGothic",
+Meiryo,
+sans-serif; // フォント2
 html,
 body,
 main,
@@ -78,7 +94,7 @@ td {
     scroll-behavior: smooth;
 }
 
- :focus {
+:focus {
     outline: 0;
 }
 
@@ -124,7 +140,7 @@ body {
     line-height: 1.5;
     background-image: none;
     word-wrap: break-word;
-    background-color: #FFF;
+    background-color: #fff;
 }
 
 * {
@@ -222,7 +238,7 @@ header {
         }
         a::before {
             // 画像を擬似要素「::before」として使う。
-            content: '';
+            content: "";
             display: inline-block;
             width: 26px;
             height: 20px;
@@ -261,7 +277,7 @@ nav {
             display: block; // 2階層目以降は横並びにしない
             li {
                 &.has-child::before {
-                    content: '';
+                    content: "";
                     position: absolute;
                     left: 6px;
                     top: 17px;
@@ -283,7 +299,7 @@ nav {
                 color: #1c509c;
             }
             &.has-child::before {
-                content: '';
+                content: "";
                 position: absolute;
                 left: 46%;
                 top: 25px;
@@ -314,7 +330,7 @@ nav {
             width: 270px;
             visibility: hidden;
             opacity: 0;
-            transition: all .3s;
+            transition: all 0.3s;
             @media screen and (max-width: 1023px) {
                 position: relative;
                 top: 0;
@@ -327,7 +343,7 @@ nav {
             ul {
                 top: 0;
                 left: 182px;
-                background: #66ADF5;
+                background: #66adf5;
                 @media screen and (max-width: 1023px) {
                     position: relative;
                     left: 0;
@@ -340,7 +356,7 @@ nav {
                 li {
                     a:hover,
                     a:active {
-                        background: #448ED3;
+                        background: #448ed3;
                     }
                 }
             }
@@ -537,7 +553,7 @@ nav {
 
 @for $i from 5 through 20 {
     .font_size_#{2 * $i} {
-        font-size: 2px * $i!important;
+        font-size: 2px * $i !important;
     }
 }
 
@@ -568,16 +584,16 @@ nav {
 $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
 @each $px in $interval {
     .margin_top_#{$px} {
-        margin-top: #{$px}px!important;
+        margin-top: #{$px}px !important;
     }
     .margin_btm_#{$px} {
-        margin-bottom: #{$px}px!important;
+        margin-bottom: #{$px}px !important;
     }
     .padding_top_#{$px} {
-        padding-top: #{$px}px!important;
+        padding-top: #{$px}px !important;
     }
     .padding_btm_#{$px} {
-        padding-bottom: #{$px}px!important;
+        padding-bottom: #{$px}px !important;
     }
 }
 
@@ -585,16 +601,16 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
     @each $px in $interval {
         @if 1 < $px {
             .margin_top_#{$px} {
-                margin-top: #{$px / 2}px!important;
+                margin-top: #{$px / 2}px !important;
             }
             .margin_btm_#{$px} {
-                margin-bottom: #{$px / 2}px!important;
+                margin-bottom: #{$px / 2}px !important;
             }
             .padding_top_#{$px} {
-                padding-top: #{$px / 2}px!important;
+                padding-top: #{$px / 2}px !important;
             }
             .padding_btm_#{$px} {
-                padding-bottom: #{$px / 2}px!important;
+                padding-bottom: #{$px / 2}px !important;
             }
         }
     }
@@ -607,16 +623,16 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
 
 @for $i from 1 through 5 {
     .padding_side_#{$i * 10 } {
-        padding-left: #{$i * 10 }px!important;
-        padding-right: #{$i * 10 }px!important;
+        padding-left: #{$i * 10}px !important;
+        padding-right: #{$i * 10}px !important;
     }
 }
 
 @media only screen and (max-width: 640px) {
     @for $i from 1 through 5 {
         .padding_side_#{$i * 10 } {
-            padding-left: #{$i * 5 }px!important;
-            padding-right: #{$i * 5 }px!important;
+            padding-left: #{$i * 5}px !important;
+            padding-right: #{$i * 5}px !important;
         }
     }
 }
@@ -630,15 +646,15 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
 /*----align----*/
 
 .text_align_ctr {
-    text-align: center!important;
+    text-align: center !important;
 }
 
 .text_align_lft {
-    text-align: left!important;
+    text-align: left !important;
 }
 
 .text_align_rgt {
-    text-align: right!important;
+    text-align: right !important;
 }
 
 
@@ -650,7 +666,7 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
 
 @for $i from 1 through 9 {
     .l_space_0#{$i} {
-        letter-spacing: #{$i / 10 }em;
+        letter-spacing: #{$i / 10}em;
     }
 }
 
@@ -734,7 +750,7 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
 .local-btn-vr1 {
     display: inline-block;
     margin: 0 5px 10px 5px;
-    line-height: inherit!important;
+    line-height: inherit !important;
     a {
         border-radius: 3px;
         -webkit-border-radius: 3px;
@@ -750,7 +766,7 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
     a:hover,
     .active {
         background-color: #88bd39;
-        color: #fff!important;
+        color: #fff !important;
         text-decoration: none;
     }
 }
@@ -758,7 +774,7 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
 .local-btn-vr2 {
     display: inline-block;
     margin: 0 5px 10px 5px;
-    line-height: inherit!important;
+    line-height: inherit !important;
     a {
         border-radius: 0px;
         -webkit-border-radius: 0px;
@@ -774,7 +790,7 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
     a:hover,
     .active {
         background-color: rgb(28, 80, 156, 0.2);
-        color: #fff!important;
+        color: #fff !important;
         text-decoration: none;
         border: 1px solid #d4b07b;
     }
@@ -808,7 +824,7 @@ a {
 
 .local-btn-area {
     a:after {
-        font-family: 'Material Icons';
+        font-family: "Material Icons";
         position: absolute;
         top: 50%;
         right: 20px;
@@ -869,7 +885,7 @@ a {
 a {
     img:hover {
         cursor: pointer;
-        opacity: .8;
+        opacity: 0.8;
     }
     img.no-hover:hover {
         cursor: pointer;
@@ -929,7 +945,7 @@ a {
 }
 
 .prev {
-    float: left
+    float: left;
 }
 
 .next {
@@ -1003,15 +1019,11 @@ img {
 ｜   レイアウト
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 
-.wrapper {
-    padding: 0 0 0;
-}
-
-.content_wrap_100 {
+.outer {
     margin: 0 auto 0;
     padding: 0;
     font-size: 16px;
-    max-width: 1400px;
+    max-width: $outer;
     width: 100%;
 }
 
@@ -1034,17 +1046,22 @@ $inner3;
 }
 
 // 各パターンでフレックス、スペースビトウィーン
-.wrap_clm {
+.wrap_clm,
+.wrap_4clm {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
     margin: 0 0 30px;
+    div {
+        margin: 0;
+    }
 }
 
 .post_clm {
     flex-wrap: wrap;
     div {
-        margin: 0 0 2.5%!important;
+        margin: 0 0 2.5% !important;
     }
 }
 
@@ -1055,325 +1072,53 @@ $inner3;
 // 2カラムの中で左に40% 右に50% を指定すると、両端がくっついて、間に10%のマージンが出来る。※予定
 @for $i from 4 through 36 {
     @if $i% 2==0 {
-        div.grid#{$i * 2.5 } {
-            width: percentage($i*25/1000);
-            margin: 0;
+        .grid#{$i * 2.5 } {
+            width: percentage($i * 25/1000);
         }
     }
     @else {
-        div.grid#{$i * 25} {
-            width: percentage($i*25/1000);
-            margin: 0;
+        .grid#{$i * 25} {
+            width: percentage($i * 25/1000);
         }
-    }
-}
-
-div.grid {
-    width: 100%;
-}
-
-@media only screen and (max-width: 950px) {
-    .inner,
-    .content_wrap_100 .inner,
-    .wp_social_bookmarking_light,
-    .breadcrumbs,
-    .content_wrap_100 .inner-900,
-    .content_wrap_100 .inner-800,
-    .content_wrap_100 .inner-700,
-    .content_wrap_100 .inner-600,
-    .wp_social_bookmarking_light {
-        width: 100%;
-        padding: 0px 3% 0;
     }
 }
 
 @media only screen and (max-width: 640px) {
-    div.cst img.w90pct,
-    div.cst img.w80pct,
-    div.cst img.w70pct,
-    div.cst img.w60pct,
-    div.cst img.w50pct,
-    div.cst img.w40pct,
-    div.cst img.w30pct {
-        width: 100%;
+    .wrap_clm div {
+        width: 100% !important;
+        margin-bottom: 5%;
     }
-    .inner,
-    .content_wrap_100 .inner,
-    .content_wrap_100 .inner-900,
-    .content_wrap_100 .inner-800,
-    .content_wrap_100 .inner-700,
-    .content_wrap_100 .inner-600,
-    .wp_social_bookmarking_light {
+    .wrap_4clm div {
+        width: 45% !important;
+        margin-bottom: 5%;
+    }
+}
+
+.grid {
+    width: 100%;
+}
+
+.inner,
+.content_wrap_100 .inner,
+.content_wrap_100 .inner_#{$inner1},
+.content_wrap_100 .inner_#{$inner2},
+.content_wrap_100 .inner_#{$inner3} {
+    @media only screen and (max-width: 950px) {
+        width: 100%;
+        padding: 0px 3% 0;
+    }
+    @media only screen and (max-width: 640px) {
         width: 100%;
         padding: 0 6% 0;
         margin: 0 auto 0;
         overflow: hidden;
     }
-    .cassetteCol1,
-    .cassetteCol2,
-    .cassetteCol2--no-mgn,
-    .cassetteCol3,
-    .cassetteCol3--no-mgn,
-    .cassetteCol4,
-    .cassetteCol4--no-mgn,
-    .cassetteCol5,
-    .cassetteCol5--no-mgn,
-    .cassette-pattern,
-    .cassette-pattern--no-mgn {
-        display: inherit;
-        margin: 0 0 0;
-        padding: 0 0 0;
-    }
-    /*--------------マージン有--------------*/
-    /*--2カラム--*/
-    .cassetteCol2 div.cst {
-        width: 100%;
-        margin: 0 auto 30px 0;
-    }
-    .cassetteCol2 div.cst:nth-child(2) {
-        margin: 0 auto 30px 0;
-    }
-    .cassetteCol2 div.cst.w50p,
-    .cassetteCol2 div.cst.w47-5p,
-    .cassetteCol2 div.cst.w45p,
-    .cassetteCol2 div.cst.w42-5p,
-    .cassetteCol2 div.cst.w40p,
-    .cassetteCol2 div.cst.w35p {
-        width: 100%;
-        margin: 0 auto;
-    }
-    /*--2カラム(投稿一覧)--*/
-    .cassetteCol2.post-col div.cst {
-        width: 100%;
-        margin: 0 0 10% 0;
-        float: inherit;
-    }
-    .cassetteCol2.post-col div.cst:nth-child(2n) {
-        margin: 0 auto 10%;
-    }
-    /*--3カラム--*/
-    .cassetteCol3 div.cst {
-        width: 100%;
-        margin: 0 auto 30px;
-    }
-    .cassetteCol3 div.cst:nth-child(3) {
-        margin: 0 auto 30px;
-    }
-    /*--3カラム(投稿一覧)--*/
-    .cassetteCol3.post-col div.cst {
-        width: 100%;
-        margin: 0 0 10%;
-        float: inherit;
-    }
-    .cassetteCol3.post-col div.cst:nth-child(3n) {
-        margin: 0 0 10%;
-    }
-    /*--4カラム--*/
-    .cassetteCol4 div.cst {
-        width: 47%;
-        float: left;
-        margin: 0 auto 20px;
-    }
-    .cassetteCol4 div.cst:nth-child(2n) {
-        margin: 0 0 20px 3%;
-    }
-    /*--5カラム--*/
-    .cassetteCol5 div.cst {
-        width: 47%;
-        float: left;
-        margin: 0 3% 20px;
-    }
-    .cassetteCol5 div.cst:nth-child(2n) {
-        margin: 0 0 20px 3%;
-    }
-    /*--4カラム(投稿一覧)--*/
-    .cassetteCol4.post-col div.cst {
-        width: 47%;
-        float: left;
-        margin: 0 6% 30px;
-    }
-    .cassetteCol4.post-col div.cst:nth-child(2n) {
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左20%--*/
-    .cassette-pattern div.cstLeft-20pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-80pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左30%--*/
-    .cassette-pattern div.cstLeft-30pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-70pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左35%--*/
-    .cassette-pattern div.cstLeft-35pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-65pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左40%--*/
-    .cassette-pattern div.cstLeft-40pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-60pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左45%--*/
-    .cassette-pattern div.cstLeft-45pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-55pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左55%--*/
-    .cassette-pattern div.cstLeft-55pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-45pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左60%--*/
-    .cassette-pattern div.cstLeft-60pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-40pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左65%--*/
-    .cassette-pattern div.cstLeft-65pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-35pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左70%--*/
-    .cassette-pattern div.cstLeft-70pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-30pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--2カラムパターン　左80%--*/
-    .cassette-pattern div.cstLeft-80pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    .cassette-pattern div.cstRight-20pct {
-        width: 100%;
-        margin: 0 0 30px;
-    }
-    /*--------------マージン無--------------*/
-    /*--マージン無2カラム--*/
-    .cassetteCol2--no-mgn div.cst {
-        width: 100%;
-        margin: 0 auto 0;
-    }
-    /*--マージン無3カラム--*/
-    .cassetteCol3--no-mgn div.cst {
-        width: 100%;
-        margin: 0 auto 0;
-    }
-    /*--マージン無4カラム--*/
-    .cassetteCol4--no-mgn div.cst {
-        width: 100%;
-        margin: 0 auto 0;
-    }
-    /*--マージン無5カラム--*/
-    .cassetteCol5--no-mgn div.cst {
-        width: 100%;
-        margin: 0 auto 0;
-    }
-    /*--マージン無2カラムパターン　左30%--*/
-    .cassette-pattern--no-mgn div.cstLeft-30pct {
-        width: 100%;
-        margin: 0 0 0 0;
-    }
-    .cassette-pattern--no-mgn div.cstRight-70pct {
-        width: 100%;
-        margin: 0 0 0 0;
-    }
-    /*--マージン無2カラムパターン　左40%--*/
-    .cassette-pattern--no-mgn div.cstLeft-40pct {
-        width: 100%;
-        margin: 0 0 0 0;
-    }
-    .cassette-pattern--no-mgn div.cstRight-60pct {
-        width: 100%;
-        margin: 0 0 0 0;
-    }
-    /*--マージン無2カラムパターン　左60%--*/
-    .cassette-pattern--no-mgn div.cstLeft-60pct {
-        width: 100%;
-        margin: 0 0 0 0;
-    }
-    .cassette-pattern--no-mgn div.cstRight-40pct {
-        width: 100%;
-        margin: 0 0 0 0;
-    }
-    /*--マージン無2カラムパターン　左70%--*/
-    .cassette-pattern--no-mgn div.cstLeft-70pct {
-        width: 100%;
-        margin: 0 0 0 0;
-    }
-    .cassette-pattern--no-mgn div.cstRight-30pct {
-        width: 100%;
-        margin: 0 0 0 0;
-    }
-    /*--2カラムでスマホ時に左カラムを上にする--*/
-    .reverse {
-        flex-direction: column;
-        display: flex;
-        height: auto;
-        align-items: flex-start;
-    }
-    .reverse div:nth-child(1) {
-        -webkit-order: 2;
-        -ms-flex-order: 2;
-        order: 2;
-    }
-    /*--------------イレギュラー--------------*/
-    .irregular .cst {
-        padding: 50px 0;
-    }
-    .irregular .cst .left-box {
-        width: 90%;
-        float: inherit;
-        padding: 0 0 0 0;
-        margin: 0 auto;
-    }
-    .irregular .cst .right-box {
-        width: 90%;
-        float: inherit;
-        padding: 0 0 0 0;
-        margin: 0 auto;
-    }
 }
 
 
-/*---- テーブル ----*/
+/*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
+｜   テーブル
+⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 
 table {
     margin-bottom: 20px;
@@ -1438,10 +1183,10 @@ table th.w40p {
         height: 5px;
     }
     .scroll::-webkit-scrollbar-track {
-        background: #F1F1F1;
+        background: #f1f1f1;
     }
     .scroll::-webkit-scrollbar-thumb {
-        background: #BCBCBC;
+        background: #bcbcbc;
     }
     /*---- テーブル ----*/
 }
@@ -1497,7 +1242,7 @@ h2.page-title span.main {
 }
 
 h2.page-title span.main:after {
-    content: '';
+    content: "";
     display: block;
     width: 80px;
     height: 2px;
@@ -1538,7 +1283,7 @@ h3 span.main {
 }
 
 h3 span.main:after {
-    content: '';
+    content: "";
     display: block;
     width: 80px;
     height: 2px;
@@ -1637,51 +1382,6 @@ h6 {
 }
 
 
-/* 記事リンク
-*************/
-
-.article a {
-    color: #88bd39;
-}
-
-.article a:hover {
-    color: #a8213c;
-    text-decoration: underline;
-}
-
-.inquiry-title {
-    text-align: center;
-    font-size: 28px;
-    margin: 0 0 20px;
-}
-
-
-/* ページタイトル
-************************/
-
-.titleImg {
-    height: 300px;
-    background-repeat: no-repeat;
-    margin: 0 0 0;
-    background-position: 0 center;
-    background-size: cover;
-    padding: 0;
-    display: flex;
-    background-attachment: fixed;
-}
-
-.titleImg:before {
-    content: "";
-    background: #000000;
-    opacity: 0.3;
-    width: 100%;
-    display: block;
-    height: inherit;
-    margin-top: 0;
-    position: absolute;
-}
-
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   その他
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -1696,7 +1396,7 @@ ol.design-num {
 }
 
 ol.design-num li {
-    list-style: none!important;
+    list-style: none !important;
     margin: 0 0 20px;
 }
 
@@ -1781,11 +1481,11 @@ strong {
         display: block;
     }
     ol.design-num {
-        margin: 0 0 20px 0!important;
+        margin: 0 0 20px 0 !important;
     }
     ol.design-num li {
-        list-style: none!important;
-        margin-left: 0!important;
+        list-style: none !important;
+        margin-left: 0 !important;
         margin: 0 0 60px;
         border-top: 5px solid #e49641;
         padding: 0% 5% 3%;
