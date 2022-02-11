@@ -1,4 +1,10 @@
 @charset "UTF-8";
+/*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
+｜   各種設定項目
+⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
+/*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
+｜   以下は変更無用
+⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 /* =Reset default browser CSS.
 Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
 -------------------------------------------------------------- */
@@ -111,7 +117,6 @@ section {
 
 body {
   color: #333333;
-  -webkit-text-size-adjust: none;
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
   line-height: 1.5;
   background-image: none;
@@ -160,8 +165,8 @@ header .header_wrap {
   padding-right: 0;
   display: flex;
   justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
+  height: 100px;
+  max-width: 1280px;
 }
 header nav {
   width: 78%;
@@ -233,6 +238,11 @@ header div.gNav_lastchild {
   }
 }
 
+main {
+  margin-top: 100px;
+  /* ヘッダー分コンテンツを下げる */
+}
+
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   グローバルメニュー ドロップダウン
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -285,8 +295,18 @@ nav ul li.has_child::before {
 }
 @media screen and (max-width: 1023px) {
   nav ul li.has_child::before {
-    left: 85%;
-    top: 34px;
+    display: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+  nav ul li.has_child > a::after {
+    content: "";
+    margin: 0 0 4px 10px;
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid #999;
+    border-right: 2px solid #999;
+    transform: rotate(135deg);
   }
 }
 @media screen and (max-width: 1023px) {
@@ -371,11 +391,16 @@ nav li.has_child:hover > ul, nav li.has_child ul li:hover > ul, nav li.has_child
   position: fixed;
   top: 0;
   bottom: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   opacity: 0;
-  width: 100vw;
+  width: 300px;
   margin: 100px 0 10px 0;
   background: #fff;
-  overflow: scroll;
+  border-left: solid 1px;
+  border-top: solid 1px;
+  overflow: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -386,13 +411,16 @@ nav li.has_child:hover > ul, nav li.has_child ul li:hover > ul, nav li.has_child
 #hNavWrap #hNav li {
   width: 100%;
   border-bottom: 1px solid #000;
-  padding: 1.5em;
   text-align: center;
 }
 #hNavWrap #hNav li a {
   color: #000;
-  padding: 0.5em;
+  padding: 1em;
   transition-duration: 0.2s;
+}
+#hNavWrap #hNav li ul a {
+  font-size: 0.9em;
+  padding: 0;
 }
 @media screen and (max-width: 1023px) {
   #hNavWrap #hNav span {
@@ -1453,11 +1481,6 @@ a img.no-hover:hover {
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   全般
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
-p {
-  margin-bottom: 20px;
-  line-height: 2em;
-}
-
 .relative {
   position: relative;
 }
@@ -1474,7 +1497,7 @@ img {
   height: auto;
 }
 
-.content-center {
+.content_center {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1507,38 +1530,72 @@ img {
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   レイアウト
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
+.full_width {
+  margin: 0 auto 0;
+  padding: 0;
+  width: 100%;
+}
+
 .outer {
   margin: 0 auto 0;
   padding: 0;
-  font-size: 16px;
-  max-width: 1400px;
+  max-width: 1600px;
   width: 100%;
 }
 
 .inner {
-  width: 100%;
-  padding-bottom: 0px;
   margin: 0 auto 0;
+  padding-bottom: 0px;
+  max-width: 1120px;
+  width: 100%;
 }
 
 .inner_950 {
-  width: 950px;
+  width: 100%;
+  max-width: 950px;
   padding-bottom: 0px;
   margin: 0 auto 0;
 }
 
 .inner_800 {
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   padding-bottom: 0px;
   margin: 0 auto 0;
 }
 
 .inner_600 {
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   padding-bottom: 0px;
   margin: 0 auto 0;
 }
 
+@media only screen and (max-width: 1600px) {
+  .outer {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 1120px) {
+  .inner {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .inner_950 {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .inner_800 {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .inner_600 {
+    width: 90%;
+  }
+}
 .wrap_clm,
 .wrap_4clm {
   display: flex;
@@ -1707,29 +1764,6 @@ img {
   width: 100%;
 }
 
-@media only screen and (max-width: 950px) {
-  .inner,
-.content_wrap_100 .inner,
-.content_wrap_100 .inner_950,
-.content_wrap_100 .inner_800,
-.content_wrap_100 .inner_600 {
-    width: 100%;
-    padding: 0px 3% 0;
-  }
-}
-@media only screen and (max-width: 640px) {
-  .inner,
-.content_wrap_100 .inner,
-.content_wrap_100 .inner_950,
-.content_wrap_100 .inner_800,
-.content_wrap_100 .inner_600 {
-    width: 100%;
-    padding: 0 6% 0;
-    margin: 0 auto 0;
-    overflow: hidden;
-  }
-}
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   テーブル
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -1741,7 +1775,7 @@ table {
 }
 
 table th {
-  border-bottom: 3px solid #9bce4f;
+  border-bottom: 3px solid #92aac7;
   vertical-align: middle;
   padding: 20px;
 }
@@ -1806,220 +1840,11 @@ table th.w40p {
 
   /*---- テーブル ----*/
 }
-/* H2
-*************/
-h2 {
-  text-align: center;
-  margin: 0 0 10px;
-  padding: 0;
-  position: relative;
-  font-size: 38px;
-}
-
-h2 span.main {
-  position: relative;
-  font-size: 38px;
-  display: inline-block;
-  z-index: 2;
-  color: #000;
-}
-
-h2 span.sub {
-  width: 100%;
-  text-transform: capitalize;
-  position: absolute;
-  font-size: 14px;
-  letter-spacing: 3px;
-  left: 50%;
-  top: 100%;
-  transform: translateX(-50%);
-  color: #fff;
-  margin: 0;
-}
-
-h2.page-title {
-  text-align: center;
-  margin: 0 0 30px;
-  padding: 0;
-  position: relative;
-}
-
-h2.page-title span.main {
-  position: relative;
-  font-size: 38px;
-  display: inline-block;
-  font-weight: bold;
-  z-index: 2;
-  color: #fff;
-  letter-spacing: 0.2em;
-}
-
-h2.page-title span.main:after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 2px;
-  background-color: #fc467e;
-  bottom: 0;
-  margin: 8px auto 8px;
-  text-align: center;
-}
-
-h2.page-title span.sub {
-  width: 100%;
-  text-transform: capitalize;
-  position: absolute;
-  font-size: 14px;
-  letter-spacing: 3px;
-  left: 50%;
-  top: 100%;
-  transform: translateX(-50%);
-  color: #fff;
-  margin: 0;
-}
-
-/* H3
-*************/
-h3 {
-  position: relative;
-  color: #fff;
-}
-
-h3 span.main {
-  position: relative;
-  font-size: 38px;
-  display: inline-block;
-  z-index: 2;
-  letter-spacing: 0.1em;
-}
-
-h3 span.main:after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 2px;
-  background-color: #fc467e;
-  bottom: 0;
-  margin: 8px auto 8px;
-  text-align: center;
-}
-
-h3 span.sub {
-  width: 100%;
-  text-transform: capitalize;
-  position: absolute;
-  font-size: 14px;
-  letter-spacing: 3px;
-  left: 50%;
-  top: 100%;
-  transform: translateX(-50%);
-  margin: 0;
-  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
-}
-
-/* H4
-*************/
-h4 {
-  font-size: 24px;
-  margin: 50px 0 30px;
-  border-bottom: 1px solid #88bd39;
-  border-left: 5px solid #88bd39;
-  padding: 5px 0 5px 20px;
-}
-
-/* H5
-*************/
-h5 {
-  font-size: 22px;
-  color: #000;
-  padding: 7px 10px 3px 10px;
-  margin: 50px 0 30px;
-  border-bottom: 2px solid #88bd39;
-}
-
-/* H6
-*************/
-h6 {
-  font-size: 20px;
-  font-weight: bold;
-  color: #88bd39;
-  margin: 30px 0 15px;
-}
-
-@media only screen and (max-width: 640px) {
-  h2.page-title {
-    margin: 30px 0 0;
-    padding: 0;
-  }
-
-  h2.page-title span.main {
-    font-size: 28px;
-    letter-spacing: inherit;
-  }
-
-  h3 {
-    font-size: 28px;
-  }
-
-  h3 span.main {
-    font-size: 28px;
-    letter-spacing: inherit;
-  }
-
-  h4 {
-    font-size: 22px;
-    color: #fff;
-    background: #9bce4f;
-    padding: 7px 20px 3px 20px;
-    margin: 50px 0 30px;
-    border-bottom: none;
-    border-left: none;
-  }
-
-  h5 {
-    font-size: 20px;
-    color: #000;
-    padding: 7px 20px 3px 20px;
-    margin: 50px 0 30px;
-    border-bottom: 1px dotted #9bce4f;
-  }
-
-  h6 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #9bce4f;
-    margin: 30px 0 15px;
-  }
-}
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   その他
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 br.pcNone {
   display: none;
-}
-
-ol.design-num {
-  list-style: none;
-  counter-reset: number;
-}
-
-ol.design-num li {
-  list-style: none !important;
-  margin: 0 0 20px;
-}
-
-ol.design-num li:before {
-  counter-increment: number;
-  content: counter(number);
-  background: #e49641;
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 20px;
-  margin: 0 10px 0 -40px;
 }
 
 .white {
@@ -2046,81 +1871,9 @@ strong {
   margin: 0 auto;
 }
 
-.content ul {
-  margin: 0 0 15px 15px;
-}
-
-.bdr-btm {
-  border-bottom: #cbb89d 1px solid;
-}
-
-.icon-position-right {
-  position: absolute;
-  top: calc(50% - 0.5em);
-  right: 2em;
-}
-
-/* 注釈
-*****************************************************/
-.atte {
-  font-size: 14px;
-  padding: 50px 0 50px;
-  margin: 80px 0 0;
-  border-top: 1px solid #c1b8ad;
-}
-
-.atte-parts {
-  font-size: 14px;
-  margin-bottom: 0;
-}
-
-@media only screen and (max-width: 640px) {
-  .titleImg {
-    height: 150px;
-    padding: 5px 0 20px;
-    margin: 0;
-  }
-
-  .titleImg:before {
-    margin-top: -5px;
-  }
-
-  br.pcNone {
-    display: block;
-  }
-
-  ol.design-num {
-    margin: 0 0 20px 0 !important;
-  }
-
-  ol.design-num li {
-    list-style: none !important;
-    margin-left: 0 !important;
-    margin: 0 0 60px;
-    border-top: 5px solid #e49641;
-    padding: 0% 5% 3%;
-  }
-
-  ol.design-num li:before {
-    display: block;
-    width: 44px;
-    height: 44px;
-    font-size: 30px;
-    margin: -26px auto 15px;
-  }
-
-  .atte {
-    margin: 30px 0 0;
-  }
-}
 /* 
 ★★★★　下記に各枠の幅を設定　★★★★　　↓↓↓
 */
-header .header_wrap {
-  height: 100px;
-  max-width: 1280px;
-}
-
 main {
   margin-top: 100px;
   /* ヘッダー分コンテンツを下げる */
