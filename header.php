@@ -1,6 +1,6 @@
     <header>
-        <div class="container black">
-            <h1 id="header__logo">
+        <div class="header_wrap">
+            <h1 id="header_logo">
                 <a href="./">
                     <img src="https://placehold.jp/20/92aac7/ffffff/225x60.png?text=header_logo%0A225x60" alt="ヘッダーロゴ">
                 </a>
@@ -9,7 +9,15 @@
                 <ul id="gNav">
                     <li><a href="./">ホーム</a></li>
                     <li><a href="./layout_demo">レイアウトDemo</a></li>
-                    <li><a href="./">事業内容</a></li>
+                    <li class="has_child"><a href="./">下層メニューあり</a>
+                        <ul>
+                            <li><a href="./">メニュー1</a></li>
+                            <li><a href="./">メニュー2</a></li>
+                            <li><a href="./">メニュー3</a></li>
+                            <li><a href="./">メニュー4</a></li>
+                            <li><a href="./">メニュー5</a></li>
+                        </ul>
+                    </li>
                     <li><a href="./">施工事例</a></li>
                     <li><a href="./recruit">採用情報</a></li>
                     <li><a href="./news">お知らせ</a></li>
@@ -19,13 +27,22 @@
 
                 <div id="hNavWrap">
                     <ul id="hNav">
-                    <li><a href="./">ホーム</a></li>
-                    <li><a href="./company_ceo/">会社案内</a></li>
-                    <li><a href="./">事業内容</a></li>
-                    <li><a href="./">施工事例</a></li>
-                    <li><a href="./recruit">採用情報</a></li>
-                    <li><a href="./news">お知らせ</a></li>
-                    <li><a href="./contact">お問い合わせ</a></li>
+                        <li><a href="./">ホーム</a></li>
+                        <li><a href="./layout_demo">レイアウトDemo</a></li>
+                        <li class="has_child"><a href="./">下層メニューあり</a>
+                            <ul>
+                                <li><a href="./">下層メニューあり</a></li>
+                                <li><a href="./">メニュー1</a></li>
+                                <li><a href="./">メニュー2</a></li>
+                                <li><a href="./">メニュー3</a></li>
+                                <li><a href="./">メニュー4</a></li>
+                                <li><a href="./">メニュー5</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="./">施工事例</a></li>
+                        <li><a href="./recruit">採用情報</a></li>
+                        <li><a href="./news">お知らせ</a></li>
+                        <li><a href="./contact">お問い合わせ</a></li>
                     </ul>
                     <div class="hNavToggleBtn">
                         <span></span>

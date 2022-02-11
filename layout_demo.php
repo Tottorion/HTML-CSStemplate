@@ -39,14 +39,14 @@
                 <div class="font_size_40 bold text_align_ctr margin_top_50">$inner_950 2カラム幅同じ</div>
                 <div class="inner_950">
                     <div class="wrap_clm">
-                    <div class="grid40" style="background-color: #92aac7;">
-                        <p style="color:white;">2カラム1<br>
-                            幅 40%</p>
-                    </div>
-                    <div class="grid40" style="background-color: #92aac7;">
-                        <p style="color:white;">2カラム2<br>
-                            幅 40%</p>
-                    </div>
+                        <div class="grid40" style="background-color: #92aac7;">
+                            <p style="color:white;">2カラム1<br>
+                                幅 40%</p>
+                        </div>
+                        <div class="grid40" style="background-color: #92aac7;">
+                            <p style="color:white;">2カラム2<br>
+                                幅 40%</p>
+                        </div>
                     </div>
                 </div>
 

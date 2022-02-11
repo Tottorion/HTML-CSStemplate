@@ -10,22 +10,16 @@ $outer: 1400px; // アウター(コンテンツ外枠)の幅
 $inner1: 950; // インナー(コンテンツ内枠)の幅
 $inner2: 800; // 上記の2パターン目 ※必要に応じて
 $inner3: 600; // 上記の3パターン目 ※必要に応じて
+
 $key_color: #92aac7; // テーマカラー
 $key_font_color: #333333; // フォントカラー
-$font_family1: "Helvetica Neue",
-Arial,
-"Hiragino Kaku Gothic ProN",
-"Hiragino Sans",
-"BIZ UDPGothic",
-Meiryo,
-sans-serif; // フォント1
-$font_family2: "Helvetica Neue",
-Arial,
-"Hiragino Kaku Gothic ProN",
-"Hiragino Sans",
-"BIZ UDPGothic",
-Meiryo,
-sans-serif; // フォント2
+$bg_color: #fff; // 背景色
+$header_bg_color: #fff; // ヘッダー背景色
+$font_family1: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo,
+    sans-serif; // フォント1
+$font_family2: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo,
+    sans-serif; // フォント2
+
 html,
 body,
 main,
@@ -133,14 +127,13 @@ section {
 }
 
 body {
-    color: #252525;
+    color: $key_font_color;
     -webkit-text-size-adjust: none;
-    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-    font-size: 80%;
+    font-family: $font_family1;
     line-height: 1.5;
     background-image: none;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: $bg_color;
 }
 
 * {
@@ -161,19 +154,17 @@ a {
     &:hover,
     &:active {
         outline: none;
-        color: #d4b07b;
+        color: $key_color;
         text-decoration: underline;
     }
 }
-
 
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   ヘッダー
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 
 header {
-    height: 100px;
-    background-color: #fff;
+    background-color: $header_bg_color;
     width: 100%;
     margin: 0 auto;
     position: fixed;
@@ -202,7 +193,7 @@ header {
             width: 100%;
         }
     }
-    #header__logo {
+    #header_logo {
         max-width: 28%;
         margin: auto;
         @media screen and (max-width: 1023px) {
@@ -216,7 +207,6 @@ header {
         margin: 0 0 0 auto;
         li {
             position: relative;
-            margin-right: 1.5em;
             &.active:after {
                 width: 100%;
             }
@@ -226,6 +216,10 @@ header {
             &:hover:after {
                 width: 100%;
             }
+        }
+        > li {
+            margin-right: 1.5em;
+            padding: calc(calc($header_height - 1.5em) * 0.5) 0;
         }
     }
     .gNav_lastchild {
@@ -260,7 +254,6 @@ header {
     }
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   グローバルメニュー ドロップダウン
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -276,7 +269,7 @@ nav {
         ul {
             display: block; // 2階層目以降は横並びにしない
             li {
-                &.has-child::before {
+                &.has_child::before {
                     content: "";
                     position: absolute;
                     left: 6px;
@@ -296,13 +289,13 @@ nav {
         li {
             position: relative; // 下の階層のulや矢印の基点にするためliにrelativeを指定
             a:hover {
-                color: #1c509c;
+                color: $key_font_color;
             }
-            &.has-child::before {
+            &.has_child::before {
                 content: "";
                 position: absolute;
                 left: 46%;
-                top: 25px;
+                top: 66%;
                 width: 6px;
                 height: 6px;
                 border-top: 2px solid #999;
@@ -314,20 +307,20 @@ nav {
                 }
             }
             @media screen and (max-width: 1023px) {
-                &.has-child.active::before {
+                &.has_child.active::before {
                     transform: rotate(-45deg);
                 }
             }
         }
     }
     li {
-        &.has-child ul {
+        &.has_child ul {
             position: absolute;
             left: 0;
-            top: 46px;
+            top: 86%;
             z-index: 4;
-            background: #fff;
-            width: 270px;
+            background: $bg_color;
+            width: 150%;
             visibility: hidden;
             opacity: 0;
             transition: all 0.3s;
@@ -361,27 +354,30 @@ nav {
                 }
             }
             li {
-                padding: 10px;
+                background-color: lighten($key_color, 15%);
+                border-top: solid 2px $header_bg_color;
                 margin: 0 auto;
+                a {
+                    line-height: 2.2em;
+                }
                 a:hover,
                 a:active {
-                    background-color: rgb(28, 80, 156, 0.2);
+                    background-color: lighten($key_color, 5%);
                 }
                 &:last-child a {
                     border-bottom: none;
                 }
             }
         }
-        &.has-child:hover>ul,
-        &.has-child ul li:hover>ul,
-        &.has-child:active>ul,
-        &.has-child ul li:active>ul {
+        &.has_child:hover > ul,
+        &.has_child ul li:hover > ul,
+        &.has_child:active > ul,
+        &.has_child ul li:active > ul {
             visibility: visible;
             opacity: 1;
         }
     }
 }
-
 
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   ハンバーガーメニュー
@@ -395,26 +391,16 @@ nav {
     #hNav {
         position: fixed;
         top: 0;
-        right: -100vw;
+        bottom: 0;
         opacity: 0;
         width: 100vw;
-        margin: 80px 0px;
+        margin: $header_height 0 10px 0;
         background: #fff;
-        overflow-x: hidden;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        display: -webkit-box;
-        display: -ms-flexbox;
+        overflow: scroll;
         display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
         justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
         align-items: center;
-        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-        -webkit-transition: 0.2s;
         transition: 0.2s;
         z-index: 999;
         li {
@@ -425,7 +411,6 @@ nav {
             a {
                 color: #000;
                 padding: 0.5em;
-                -webkit-transition-duration: 0.2s;
                 transition-duration: 0.2s;
             }
         }
@@ -507,7 +492,6 @@ nav {
     }
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   ページトップへボタン
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -546,7 +530,6 @@ nav {
     }
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   フォントサイズ .font_size_○○
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -565,17 +548,15 @@ nav {
     }
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   行高さ line_height_○○
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 
 @for $i from 10 through 20 {
     .line_height_#{$i} {
-        line-height: #{$i / 10}rem !important;
+        line-height: #{$i * 0.1}rem !important;
     }
 }
-
 
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   マージン・パディング margin(padding)_top(btm)_○○
@@ -616,7 +597,6 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
     }
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   パディングサイド padding_side_○○
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -637,11 +617,9 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
     }
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   テキスト
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
-
 
 /*----align----*/
 
@@ -656,7 +634,6 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
 .text_align_rgt {
     text-align: right !important;
 }
-
 
 /*----文字間----*/
 
@@ -686,7 +663,6 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
     }
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   アニメーション
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -710,7 +686,6 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
     }
 }
 
-
 /*----文字シャドー----*/
 
 .text-shadow-01 {
@@ -718,14 +693,12 @@ $interval: 0 5 10 20 30 40 50 60 70 80 90 100 150;
     text-shadow: 1px 2px 3px #000;
 }
 
-
 /*----文字グロー----*/
 
 .text-glow-01 {
     /*左の値から＝＝横に〇px・縦に〇px・ぼかし〇px・影の色#〇〇〇〇〇〇　ｘ4方向*/
     text-shadow: 1px 1px 5px #d7c7b3, -1px -1px 5px #d7c7b3, -1px 1px 5px #d7c7b3, 1px -1px 5px #d7c7b3;
 }
-
 
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   ボタン
@@ -819,7 +792,6 @@ a {
     }
 }
 
-
 /*----ボタンIcon----*/
 
 .local-btn-area {
@@ -849,7 +821,6 @@ a {
     }
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   PC/SP 切り替え
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -874,11 +845,9 @@ a {
     }
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   その他
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
-
 
 /*----イメージホバー----*/
 
@@ -892,7 +861,6 @@ a {
         opacity: inherit;
     }
 }
-
 
 /*--------パンくず--------*/
 
@@ -934,7 +902,6 @@ a {
     }
 }
 
-
 /*--------ページネーション--------*/
 
 .wp-pagenavi {
@@ -957,7 +924,6 @@ a {
     color: #e2913d;
     text-align: center;
 }
-
 
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   全般
@@ -1014,7 +980,6 @@ img {
     justify-content: space-evenly;
 }
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   レイアウト
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
@@ -1034,9 +999,7 @@ img {
 }
 
 // 最上部で指定したインナー枠を作成する
-$inner: $inner1,
-$inner2,
-$inner3;
+$inner: $inner1, $inner2, $inner3;
 @each $width in $inner {
     .inner_#{$width} {
         width: #{$width}px;
@@ -1065,7 +1028,6 @@ $inner3;
     }
 }
 
-
 /*--------------グリッド1要素の幅--------------*/
 
 // 10% から 2.5% 刻みで 90% まで、グリッド要素の幅を設定する。
@@ -1075,8 +1037,7 @@ $inner3;
         .grid#{$i * 2.5 } {
             width: percentage($i * 25/1000);
         }
-    }
-    @else {
+    } @else {
         .grid#{$i * 25} {
             width: percentage($i * 25/1000);
         }
@@ -1114,7 +1075,6 @@ $inner3;
         overflow: hidden;
     }
 }
-
 
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   テーブル
@@ -1165,7 +1125,6 @@ table th.w40p {
     width: 40%;
 }
 
-
 /*---- SP横スクロール ----*/
 
 @media only screen and (max-width: 640px) {
@@ -1190,7 +1149,6 @@ table th.w40p {
     }
     /*---- テーブル ----*/
 }
-
 
 /* H2
 *************/
@@ -1265,7 +1223,6 @@ h2.page-title span.sub {
     margin: 0;
 }
 
-
 /* H3
 *************/
 
@@ -1303,9 +1260,9 @@ h3 span.sub {
     top: 100%;
     transform: translateX(-50%);
     margin: 0;
-    font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+    font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝",
+        "ＭＳ 明朝", serif;
 }
-
 
 /* H4
 *************/
@@ -1318,7 +1275,6 @@ h4 {
     padding: 5px 0 5px 20px;
 }
 
-
 /* H5
 *************/
 
@@ -1329,7 +1285,6 @@ h5 {
     margin: 50px 0 30px;
     border-bottom: 2px solid #88bd39;
 }
-
 
 /* H6
 *************/
@@ -1380,7 +1335,6 @@ h6 {
         margin: 30px 0 15px;
     }
 }
-
 
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   その他
@@ -1452,7 +1406,6 @@ strong {
     right: 2em;
 }
 
-
 /* 注釈
 *****************************************************/
 
@@ -1502,7 +1455,6 @@ strong {
     }
 }
 
-
 /* 
 ★★★★　下記に各枠の幅を設定　★★★★　　↓↓↓
 */
@@ -1517,30 +1469,24 @@ main {
     /* ヘッダー分コンテンツを下げる */
 }
 
-
 /* 
 下記にページ毎のcssを追加していく。（テンプレートを使いまわす時は全削除）
 ※ブレークポイントもページ毎に記載する。
 */
 
+/*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
+｜   TOP
+⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   TOP
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 
-
 /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
 ｜   TOP
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
-
-
-/*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
-｜   TOP
-⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
-
 
 /* ★★★★　上記にページ毎のcssを追加していく　★★★★　　↑↑↑
 *****************************************************/
-
 
 /*# sourceMappingURL=style.min.css.map */

@@ -1,12 +1,15 @@
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
 
-    // ###ハンバーガー###
+    /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
+    ｜   ハンバーガー開閉
+    ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
+
     var $btn = $('.hNavToggleBtn');
     var $hNav = $('#hNavWrap');
     var $mask = $('#hNavClose');
     var $a = $('a');
     var open = 'open';
-    $btn.on('click', function() {
+    $btn.on('click', function () {
         if (!$hNav.hasClass(open)) {
             $hNav.addClass(open);
         } else {
@@ -14,18 +17,51 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    $mask.on('click', function() {
+    $mask.on('click', function () {
         $hNav.removeClass(open);
     })
-    $a.on('click', function() {
-        $hNav.removeClass(open);
-    })
+    // $a.on('click', function () {  aタグを開いて下層ページを開きたい時にハンバーガーメニューが閉じるので除外
+    //     $hNav.removeClass(open);
+    // })
     var $gNav = document.getElementById('gNav').innerHTML;
-    document.getElementById('hNav').innerHTML = $gNav;
+    // document.getElementById('hNav').innerHTML = $gNav;  下層ページがある時に、hNAv と gNav を別物にしたいので除外
 
+    /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
+    ｜   ハンバーガー内 下層ページ
+    ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 
-    // ###スムーズスクロール###
-    $('a[href^="#"]').click(function() {
+    //ドロップダウンの設定を関数でまとめる
+    function mediaQueriesWin() {
+        var width = $(window).width();
+        if (width <= 1023) { //横幅が1023px以下の場合 $(".has_child>a").off('click');	//has_childクラスがついたaタグのonイベントを複数登録を避ける為offにして一旦初期状態へ
+            $(".has_child>a").on('click', function () { //has_childクラスがついたaタグをクリックしたら
+                var parentElem = $(this).parent(); // aタグから見た親要素のliを取得し
+                $(parentElem).toggleClass('active'); //矢印方向を変えるためのクラス名を付与して
+                $(parentElem).children('ul').stop().slideToggle(500); //liの子要素のスライドを開閉させる※数字が大きくなるほどゆっくり開く
+                return false; //リンクの無効化
+            });
+        } else { //横幅が1024px以上の場合
+            $(".has_child>a").off('click'); //has_childクラスがついたaタグのonイベントをoff(無効)にし
+            $(".has_child>a").removeClass('active'); //activeクラスを削除
+            $('.has_child').children('ul').css("display", ""); //スライドトグルで動作したdisplayも無効化にする
+        }
+    }
+
+    // ページがリサイズされたら動かしたい場合の記述
+    $(window).resize(function () {
+        mediaQueriesWin(); /* ドロップダウンの関数を呼ぶ*/
+    });
+
+    // ページが読み込まれたらすぐに動かしたい場合の記述
+    $(window).on('load', function () {
+        mediaQueriesWin(); /* ドロップダウンの関数を呼ぶ*/
+    });
+
+    /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
+    ｜   スムーススクロール
+    ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
+
+    $('a[href^="#"]').click(function () {
         var speed = 500;
         var href = $(this).attr("href");
         var target = $(href == "#" || href == "" ? 'html' : href);
@@ -34,11 +70,14 @@ window.addEventListener('DOMContentLoaded', function() {
         return false;
     });
 
-    // ###スクロールトップ###
+    /*￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣🐠
+    ｜   スクロールトップ(最上部へ)
+    ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
+
     var showFlag = false;
     var topBtn = $('#pageTop');
     topBtn.css('bottom', '-150px');
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 500) {
             if (showFlag == false) {
                 showFlag = true;
@@ -52,7 +91,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
     //スクロールしてトップ
-    topBtn.click(function() {
+    topBtn.click(function () {
         $('body,html').animate({
             scrollTop: 0
         }, 500);
@@ -60,25 +99,3 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
 });
-
-// トップページヘッダー背景色追加
-function headerBg() {
-    var header = $('header');
-    $(window).on('load scroll resize', function() {
-        if ($(this).scrollTop() < 680) {
-            header.css('background-color', '#fff');
-        } else {
-            header.css('background-color', '#fff');
-        }
-    });
-}
-
-
-var userAgent = window.navigator.userAgent.toLowerCase();
-
-if (userAgent.indexOf('msie') != -1 ||
-    userAgent.indexOf('trident') != -1) {} else {
-    window.addEventListener('DOMContentLoaded', function() {
-        // new ScrollHint('.js-scrollable');
-    });
-}

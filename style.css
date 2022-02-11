@@ -110,10 +110,9 @@ section {
 }
 
 body {
-  color: #252525;
+  color: #333333;
   -webkit-text-size-adjust: none;
-  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  font-size: 80%;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
   line-height: 1.5;
   background-image: none;
   word-wrap: break-word;
@@ -138,7 +137,7 @@ a img {
 }
 a:hover, a:active {
   outline: none;
-  color: #d4b07b;
+  color: #92aac7;
   text-decoration: underline;
 }
 
@@ -146,7 +145,6 @@ a:hover, a:active {
 ｜   ヘッダー
 ⎿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿🐠 */
 header {
-  height: 100px;
   background-color: #fff;
   width: 100%;
   margin: 0 auto;
@@ -174,12 +172,12 @@ header nav {
     width: 100%;
   }
 }
-header #header__logo {
+header #header_logo {
   max-width: 28%;
   margin: auto;
 }
 @media screen and (max-width: 1023px) {
-  header #header__logo {
+  header #header_logo {
     width: 100%;
     min-width: 200px;
   }
@@ -191,7 +189,6 @@ header #gNav {
 }
 header #gNav li {
   position: relative;
-  margin-right: 1.5em;
 }
 header #gNav li.active:after {
   width: 100%;
@@ -201,6 +198,10 @@ header #gNav li:hover a {
 }
 header #gNav li:hover:after {
   width: 100%;
+}
+header #gNav > li {
+  margin-right: 1.5em;
+  padding: calc((100px - 1.5em) * 0.5) 0;
 }
 header .gNav_lastchild {
   display: flex;
@@ -248,7 +249,7 @@ header div.gNav_lastchild {
 nav ul ul {
   display: block;
 }
-nav ul ul li.has-child::before {
+nav ul ul li.has_child::before {
   content: "";
   position: absolute;
   left: 6px;
@@ -260,7 +261,7 @@ nav ul ul li.has-child::before {
   transform: rotate(45deg);
 }
 @media screen and (max-width: 1023px) {
-  nav ul ul li.has-child::before {
+  nav ul ul li.has_child::before {
     transform: rotate(135deg);
     left: 20px;
   }
@@ -269,13 +270,13 @@ nav ul li {
   position: relative;
 }
 nav ul li a:hover {
-  color: #1c509c;
+  color: #333333;
 }
-nav ul li.has-child::before {
+nav ul li.has_child::before {
   content: "";
   position: absolute;
   left: 46%;
-  top: 25px;
+  top: 66%;
   width: 6px;
   height: 6px;
   border-top: 2px solid #999;
@@ -283,29 +284,29 @@ nav ul li.has-child::before {
   transform: rotate(135deg);
 }
 @media screen and (max-width: 1023px) {
-  nav ul li.has-child::before {
+  nav ul li.has_child::before {
     left: 85%;
     top: 34px;
   }
 }
 @media screen and (max-width: 1023px) {
-  nav ul li.has-child.active::before {
+  nav ul li.has_child.active::before {
     transform: rotate(-45deg);
   }
 }
-nav li.has-child ul {
+nav li.has_child ul {
   position: absolute;
   left: 0;
-  top: 46px;
+  top: 86%;
   z-index: 4;
   background: #fff;
-  width: 270px;
+  width: 150%;
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s;
 }
 @media screen and (max-width: 1023px) {
-  nav li.has-child ul {
+  nav li.has_child ul {
     position: relative;
     top: 0;
     width: 100%;
@@ -315,13 +316,13 @@ nav li.has-child ul {
     transition: none;
   }
 }
-nav li.has-child ul ul {
+nav li.has_child ul ul {
   top: 0;
   left: 182px;
   background: #66adf5;
 }
 @media screen and (max-width: 1023px) {
-  nav li.has-child ul ul {
+  nav li.has_child ul ul {
     position: relative;
     left: 0;
     width: 100%;
@@ -331,22 +332,26 @@ nav li.has-child ul ul {
     transition: none;
   }
 }
-nav li.has-child ul ul li a:hover,
-nav li.has-child ul ul li a:active {
+nav li.has_child ul ul li a:hover,
+nav li.has_child ul ul li a:active {
   background: #448ed3;
 }
-nav li.has-child ul li {
-  padding: 10px;
+nav li.has_child ul li {
+  background-color: #c5d1e1;
+  border-top: solid 2px #fff;
   margin: 0 auto;
 }
-nav li.has-child ul li a:hover,
-nav li.has-child ul li a:active {
-  background-color: rgba(28, 80, 156, 0.2);
+nav li.has_child ul li a {
+  line-height: 2.2em;
 }
-nav li.has-child ul li:last-child a {
+nav li.has_child ul li a:hover,
+nav li.has_child ul li a:active {
+  background-color: #a3b7d0;
+}
+nav li.has_child ul li:last-child a {
   border-bottom: none;
 }
-nav li.has-child:hover > ul, nav li.has-child ul li:hover > ul, nav li.has-child:active > ul, nav li.has-child ul li:active > ul {
+nav li.has_child:hover > ul, nav li.has_child ul li:hover > ul, nav li.has_child:active > ul, nav li.has_child ul li:active > ul {
   visibility: visible;
   opacity: 1;
 }
@@ -365,14 +370,12 @@ nav li.has-child:hover > ul, nav li.has-child ul li:hover > ul, nav li.has-child
 #hNavWrap #hNav {
   position: fixed;
   top: 0;
-  right: -100vw;
+  bottom: 0;
   opacity: 0;
   width: 100vw;
-  margin: 80px 0px;
+  margin: 100px 0 10px 0;
   background: #fff;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: scroll;
   display: flex;
   justify-content: center;
   align-items: center;
