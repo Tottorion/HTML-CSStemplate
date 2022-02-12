@@ -191,12 +191,8 @@
             </div>
         </section>
 
-
-
-
         <section class="sect_01">
         </section>
-
 
         <section class="sect_02">
         </section>

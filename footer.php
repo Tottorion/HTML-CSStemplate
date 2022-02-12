@@ -24,10 +24,6 @@
     <p></p>
 </div>
 
-<script>
-    headerBg();
-</script>
-
 </body>
 
 </html>
